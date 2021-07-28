@@ -5,10 +5,13 @@ import Card from './components/Card'
 import { pricings } from './data/pricings'
 import ToggleButton from './components/ToggleButton'
 import { colors } from './data/Colors'
+import topBg from './images/bg-top.svg'
+import bottomBg from './images/bg-bottom.svg'
 
 const PRIMARY_CARD_TITLE = 'Professional'
 
 const Title = styled.h1`
+    z-index: 2;
     text-align: center;
     font-size: 2rem;
     line-height: 2.5rem;
@@ -31,6 +34,7 @@ const Wrapper = styled.section`
   }
 `
 const CardsContainer = styled.section`
+  z-index: 2;
   max-width: 65.625rem;
   display: flex;
   flex-direction: column;
@@ -47,11 +51,43 @@ const CardsContainer = styled.section`
   }
 `
 
+const TopBg = styled.div`
+  background: url(${topBg});
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  width: 375px;
+  height: 658px;
+
+  @media screen and (max-width: 767px){
+    left: auto;
+    right: -200px;
+    height: -150px;
+  }
+`
+
+const BottomBg = styled.div`
+  background: url(${bottomBg});
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 353px;
+  height: 304px;
+
+  @media screen and (max-width: 600px){
+    display: none;
+  }
+`
+
 function App() {
   const [monthlyPricing, setMonthlyPricing] = useState(true)
 
   return (
     <div className="App">
+      <TopBg />
+      <BottomBg />
       <Wrapper>
         <Title>Our pricing</Title>
         <ToggleButton

@@ -4,6 +4,7 @@ import { fontStyle } from '../data/Typography'
 import { gradients, colors } from '../data/Colors'
 
 const Wrapper = styled.div`
+    z-index: 2;
     display: flex;
     flex-direction: row;
     justify-content: center;
