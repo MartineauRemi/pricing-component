@@ -47,9 +47,11 @@ const Toggle = styled.button`
 
 export default function ToggleButton({leftText, rightText, monthlyPricing, setMonthlyPricing}) {
     return (
-        <Wrapper onClick={() => setMonthlyPricing(!monthlyPricing)}>
+        <Wrapper>
             <Text>{leftText? leftText : ""}</Text>
-            <Toggle monthlyPricing={monthlyPricing}/>
+            <Toggle
+                monthlyPricing={monthlyPricing}
+                onClick={() => setMonthlyPricing(!monthlyPricing)}/>
             <Text>{rightText? rightText : ""}</Text>
         </Wrapper>
     )
