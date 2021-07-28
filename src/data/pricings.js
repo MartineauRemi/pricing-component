@@ -1,7 +1,7 @@
 export const pricings = [
     {
       title: "Basic",
-      storage: "500GB",
+      storage: "500 GB",
       users: 2,
       transfert: 3,
       price: {
@@ -11,7 +11,7 @@ export const pricings = [
     },
     {
       title: "Professional",
-      storage: "1TB",
+      storage: "1 TB",
       users: 5,
       transfert: 10,
       price: {
@@ -21,7 +21,7 @@ export const pricings = [
     },
     {
       title: "Master",
-      storage: "2TB",
+      storage: "2 TB",
       users: 10,
       transfert: 20,
       price: {

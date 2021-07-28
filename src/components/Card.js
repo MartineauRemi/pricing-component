@@ -1,14 +1,17 @@
 import styled from "styled-components"
-import Button from "./shared/Button"
-
-const purpleGradient = 'linear-gradient(135deg, #A2A7F0 0%, #696EDD 100%)';
-const veryLightGrayishBlue = 'hsl(240, 78%, 98%)';
+import Button from "./Button"
+import {colors, gradients} from "../data/Colors"
 
 const Wrapper = styled.div`
-    padding: 2rem;
-    background: ${props => props.primary? purpleGradient : "white"};
+    background: ${props => props.primary? gradients.purpleGradient : "white"};
     border-radius: 0.625rem;
-    color: ${props => props.primary? 'white' : 'hsl(232, 13%, 33%)'}
+    color: ${props => props.primary? 'white' : 'hsl(232, 13%, 33%)'};
+    padding: 2rem 1.875rem;
+    width: 20.4375rem;
+
+    @media screen and (min-width: 1440px){
+        padding: ${props => props.primary ? '3.5rem 2rem' : '2rem'};
+    }
 `
 
 const Category = styled.h2`
@@ -19,17 +22,31 @@ const Category = styled.h2`
 `
 
 const List = styled.ul`
-    padding: 0;
+    margin-bottom: 2rem;
+
+    li:first-child{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 const ListItem = styled.li`
     list-style-type: none;
-    padding: ${props => props.price ? "2rem 0" : "0.75rem 0"};
-    font-size: ${props => props.price ? "4.5rem" : "1rem"};
+    padding: ${props => props.price ? "1.5rem 0 2rem 0" : "0.75rem 0"};
+    font-size: ${props => props.price ? "2.5rem" : "1rem"};
     font-weight: 700;
-    line-height: ${props => props.price ? "4.5rem" : "1.75rem"};
-    letter-spacing: ${props => props.price ? "-2.16px" : "auto"};
-    border-bottom: 1px solid ${props => props.primary? veryLightGrayishBlue : 'rgb(110, 114, 142)'};
+    line-height: ${props => props.price ? "3rem" : "1.75rem"};
+    letter-spacing: -1.2px;
+    border-bottom: 1px solid ${props => props.primary? colors.veryLightGrayishBlue : 'rgb(110, 114, 142)'};
+`
+
+const Strong = styled.strong`
+font-size: 4.5rem;
+line-height: 4.5rem;
+letter-spacing: -2.16px;
+margin-left: 0.5rem;
 `
 
 
@@ -39,7 +56,7 @@ export default function Card({className, title, price, storage, users, transfert
             <Category>{title}</Category>
             <List>
                 <ListItem price primary={primary}>
-                    ${price}
+                    $<Strong>{price}</Strong>
                 </ListItem>
                 <ListItem primary={primary}>
                     {storage} Storage

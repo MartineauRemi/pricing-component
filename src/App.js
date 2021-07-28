@@ -1,12 +1,51 @@
 import styled from 'styled-components'
-import './App.css'
+import "./App.css"
 import React, { useState } from 'react'
 import Card from './components/Card'
 import { pricings } from './data/pricings'
-import ToggleButton from './components/shared/ToggleButton'
+import ToggleButton from './components/ToggleButton'
+import { colors } from './data/Colors'
 
 const PRIMARY_CARD_TITLE = 'Professional'
-const darkGrayishBlue = '#6d708d';
+
+const Title = styled.h1`
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: ${colors.darkGrayishBlue};
+  `
+
+const Wrapper = styled.section`
+  height: 100%;
+  min-height: 100vh;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media screen and (min-width: 1440px){
+    padding: 0;
+    justify-content: center;
+  }
+`
+const CardsContainer = styled.section`
+  max-width: 65.625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (max-width: 1023px){
+    .card:not(:last-child){
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px){
+    flex-direction: row;
+  }
+`
 
 function App() {
   const [monthlyPricing, setMonthlyPricing] = useState(true)
@@ -21,40 +60,24 @@ function App() {
           monthlyPricing={monthlyPricing}
           setMonthlyPricing={setMonthlyPricing}
           />
-        {pricings.map((pricing, index) => {
-          return (
-              <Card
-                key={index}
-                className='card'
-                title={pricing.title}
-                price={monthlyPricing? pricing.price.monthly : pricing.price.annually}
-                storage={pricing.storage}
-                users={pricing.users}
-                transfert={pricing.transfert}
-                primary={pricing.title === PRIMARY_CARD_TITLE? true : false}/>)}
-        )}
+
+        <CardsContainer>
+          {pricings.map((pricing, index) => {
+            return (
+                <Card
+                  key={index}
+                  className='card'
+                  title={pricing.title}
+                  price={monthlyPricing? pricing.price.monthly : pricing.price.annually}
+                  storage={pricing.storage}
+                  users={pricing.users}
+                  transfert={pricing.transfert}
+                  primary={pricing.title === PRIMARY_CARD_TITLE? true : false}/>)}
+          )}
+        </CardsContainer>
       </Wrapper>
     </div>
   );
 }
-
-const Title = styled.h1`
-    text-align: center;
-    font-size: 2rem;
-    line-height: 2.5rem;
-    margin-bottom: 2.5rem;
-    color: ${darkGrayishBlue};
-  `
-
-  const Wrapper = styled.section`
-    padding: 4rem 1.5rem;
-    height: 100%;
-    max-width: 100vw;
-    background-color: hsl(240, 78%, 98%);
-
-    .card:not(:last-child){
-      margin-bottom: 2rem;
-    }
-  `
 
 export default App;

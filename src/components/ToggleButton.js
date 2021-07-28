@@ -1,19 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { fontStyle } from './Typography';
-
-export default function ToggleButton({leftText, rightText, monthlyPricing, setMonthlyPricing}) {
-    return (
-        <Wrapper onClick={() => setMonthlyPricing(!monthlyPricing)}>
-            <Text>{leftText? leftText : ""}</Text>
-            <Toggle monthlyPricing={monthlyPricing}/>
-            <Text>{rightText? rightText : ""}</Text>
-        </Wrapper>
-    )
-}
-
-const purpleGradient = 'linear-gradient(135deg, #A2A7F0 0%, #696EDD 100%)';
-const darkGrayishBlue = '#6d708d';
+import { fontStyle } from '../data/Typography'
+import { gradients, colors } from '../data/Colors'
 
 const Wrapper = styled.div`
     display: flex;
@@ -22,17 +10,21 @@ const Wrapper = styled.div`
     align-items: center;
     width: 100%;
     margin-bottom: 5rem;
+
+    @media screen and (min-width: 1440px){
+        margin-bottom: 4rem;
+    }
 `
 
 const Text = styled.span`
-    color: ${darkGrayishBlue};
+    color: ${colors.darkGrayishBlue};
     ${fontStyle}
 `
 
 const Toggle = styled.button`
     border: none;
     cursor: pointer;
-    background: ${purpleGradient};
+    background: ${gradients.purpleGradient};
     height: 2rem;
     width: 3.5rem;
     border-radius: 1.5rem;
@@ -51,3 +43,14 @@ const Toggle = styled.button`
         transition: all 0.1s ease-in-out;
     }
 `
+
+export default function ToggleButton({leftText, rightText, monthlyPricing, setMonthlyPricing}) {
+    return (
+        <Wrapper onClick={() => setMonthlyPricing(!monthlyPricing)}>
+            <Text>{leftText? leftText : ""}</Text>
+            <Toggle monthlyPricing={monthlyPricing}/>
+            <Text>{rightText? rightText : ""}</Text>
+        </Wrapper>
+    )
+}
+
