@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/MartineauRemi/pricing-component)
-- Live Site URL: [Add live site URL here](https://pricing-layout.herokuapp.com/)
+- Solution URL: [https://github.com/MartineauRemi/pricing-component](https://github.com/MartineauRemi/pricing-component)
+- Live Site URL: [https://pricing-layout.herokuapp.com/](https://pricing-layout.herokuapp.com/)
 
 ## My process
 
